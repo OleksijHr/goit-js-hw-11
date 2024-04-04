@@ -14,11 +14,14 @@
     />
   </head>
   <body>
-    <section>
-      <input type="submit" placeholder="Search images..." />
-      <button type="button">Search</button>
-      <ul class="images-list"></ul>
-    </section>
+    <form class="search-form">
+      <input type="text" name="search" placeholder="Search images..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="loader-box"><div class="loader"></div></div>
+
+    <ul class="object-list gallery"></ul>
   </body>
   <script type="module" src="./main.js"></script>
 </html>
