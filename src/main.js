@@ -29,13 +29,14 @@ function handleSubmit(event) {
         });
     }
 
-    const searchValue = event.currentTarget.elements.search.value;
+    const searchValue = event.currentTarget.elements.search.value.trim();
 
     loader.style.display = "flex";
 
     pixabayApi.searchObject(searchValue)
         .then(data => {
             objectList.innerHTML = renderFunction.createMurkup(data.hits);
+            renderFunction.updateMurkup();
             searchForm.reset();
 
             loader.style.display = "none";
