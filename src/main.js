@@ -35,6 +35,15 @@ function handleSubmit(event) {
 
     pixabayApi.searchObject(searchValue)
         .then(data => {
+            if (data.hits !== searchValue) {
+                loader.style.display = "none";
+
+                return iziToast.info({
+                    message: "Don't found",
+                    closeOnClick: true,
+                    position: "topCenter"
+                })
+            }
             objectList.innerHTML = renderFunction.createMurkup(data.hits);
             renderFunction.updateMurkup();
             searchForm.reset();
@@ -42,8 +51,12 @@ function handleSubmit(event) {
             loader.style.display = "none";
         })
         .catch(error => {
-            console.log(error);
             loader.style.display = "none";
+            return iziToast.error({
+                message: `${error}`,
+                backgroundColor: "red",
+                position: "topCenter"
+            })
         })
 }
 
