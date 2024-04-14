@@ -61,35 +61,3 @@ function handleSubmit(event) {
             })
         })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export function hello(name) {
-//     console.log(`hello, ${name}`);
-//     console.log(searchForm);
-// }
-
-// export function world(name) {
-//     console.log(`hello, ${name}`);
-// }
-
-
-// pixabayApi.hello('Karina');
-// renderFunction.world('Ukraine');
