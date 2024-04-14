@@ -35,7 +35,7 @@ function handleSubmit(event) {
 
     pixabayApi.searchObject(searchValue)
         .then(data => {
-            if (data.total === 0) {
+            if (!data.total) {
                 loader.style.display = "none";
 
                 return iziToast.info({
