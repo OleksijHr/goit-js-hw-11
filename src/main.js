@@ -35,7 +35,7 @@ function handleSubmit(event) {
 
     pixabayApi.searchObject(searchValue)
         .then(data => {
-            if (data.hits !== searchValue) {
+            if (data.total === 0) {
                 loader.style.display = "none";
 
                 return iziToast.info({
@@ -44,6 +44,8 @@ function handleSubmit(event) {
                     position: "topCenter"
                 })
             }
+            console.log(data);
+
             objectList.innerHTML = renderFunction.createMurkup(data.hits);
             renderFunction.updateMurkup();
             searchForm.reset();
@@ -53,7 +55,7 @@ function handleSubmit(event) {
         .catch(error => {
             loader.style.display = "none";
             return iziToast.error({
-                message: `${error}`,
+                message: `${error.message}`,
                 backgroundColor: "red",
                 position: "topCenter"
             })
