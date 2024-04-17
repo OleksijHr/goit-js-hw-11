@@ -1,19 +1,5 @@
 // тут функції для відображення елементів інтерфейсу
 
-// Описаний у документації
-import simpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-const objectList = document.querySelector(".object-list");
-const lightboxGallery = new simpleLightbox('.gallery a', {
-    caption: true,
-    captionsData: 'alt',
-    captionDelay: 250,
-    showCounter: false
-});
-
-
 export const createMurkup =  function (objArr) {
 
     return objArr.map(({ views, comments, downloads, likes, webformatURL, tags, largeImageURL }) => {
@@ -29,10 +15,7 @@ export const createMurkup =  function (objArr) {
         <li class="downloads value-item"><p class="article">Downloads</p><p class="value">${downloads}</p></li>
         </ul></div>
         </li>`
-    }).join("");
+    }).join("");  
 };
 
-export const updateMurkup = function (createMurkup) {
-    objectList.insertAdjacentHTML('beforeend', createMurkup);
-    lightboxGallery.refresh();
-}
+

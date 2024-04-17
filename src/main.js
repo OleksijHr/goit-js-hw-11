@@ -9,11 +9,22 @@ import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 
+// Описаний у документації
+import simpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 
 const searchForm = document.querySelector(".search-form");
 const search = document.querySelector("input");
 const objectList = document.querySelector(".object-list");
 const loader = document.querySelector(".loader-box");
+const lightboxGallery = new simpleLightbox('.gallery a', {
+    caption: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+    showCounter: false
+});
 
 searchForm.addEventListener("submit", handleSubmit);
 
@@ -44,10 +55,8 @@ function handleSubmit(event) {
                     position: "topCenter"
                 })
             }
-            console.log(data);
 
-            objectList.innerHTML = renderFunction.createMurkup(data.hits);
-            renderFunction.updateMurkup();
+            updateMurkup(data.hits);
             searchForm.reset();
 
             loader.style.display = "none";
@@ -60,4 +69,9 @@ function handleSubmit(event) {
                 position: "topCenter"
             })
         })
+}
+
+function updateMurkup (hits) {
+        objectList.insertAdjacentHTML('beforeend', renderFunction.createMurkup(hits));
+        lightboxGallery.refresh();
 }
