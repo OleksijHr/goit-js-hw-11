@@ -26,6 +26,7 @@ const lightboxGallery = new simpleLightbox('.gallery a', {
     showCounter: false
 });
 
+
 searchForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
@@ -39,7 +40,7 @@ function handleSubmit(event) {
             position: "topCenter"
         });
     }
-
+ 
     const searchValue = event.currentTarget.elements.search.value.trim();
 
     loader.style.display = "flex";
@@ -55,6 +56,7 @@ function handleSubmit(event) {
                     position: "topCenter"
                 })
             }
+            console.log(data);
 
             updateMurkup(data.hits);
             searchForm.reset();
@@ -71,7 +73,9 @@ function handleSubmit(event) {
         })
 }
 
-function updateMurkup (hits) {
-        objectList.insertAdjacentHTML('beforeend', renderFunction.createMurkup(hits));
-        lightboxGallery.refresh();
+
+function updateMurkup(hits) {
+    objectList.textContent = "";
+    objectList.insertAdjacentHTML('beforeend', renderFunction.createMurkup(hits));
+    lightboxGallery.refresh();
 }

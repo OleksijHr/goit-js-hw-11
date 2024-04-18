@@ -1,5 +1,6 @@
 // тут функції для відображення елементів інтерфейсу
 
+
 export const createMurkup =  function (objArr) {
 
     return objArr.map(({ views, comments, downloads, likes, webformatURL, tags, largeImageURL }) => {
@@ -15,7 +16,6 @@ export const createMurkup =  function (objArr) {
         <li class="downloads value-item"><p class="article">Downloads</p><p class="value">${downloads}</p></li>
         </ul></div>
         </li>`
-    }).join("");  
+    }).join("");
 };
-
 
