@@ -40,6 +40,8 @@ function handleSubmit(event) {
             position: "topCenter"
         });
     }
+
+    objectList.textContent = "";
  
     const searchValue = event.currentTarget.elements.search.value.trim();
 
@@ -75,7 +77,6 @@ function handleSubmit(event) {
 
 
 function updateMurkup(hits) {
-    objectList.textContent = "";
     objectList.insertAdjacentHTML('beforeend', renderFunction.createMurkup(hits));
     lightboxGallery.refresh();
 }
